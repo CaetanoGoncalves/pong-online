@@ -1,0 +1,53 @@
+body{
+    background-color: white;
+    height: 100vh;
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap:100px
+}
+/*Estilos menu de opções*/
+.screen
+{
+    display: none;
+}
+.screen.active
+{
+    display:flex;
+}
+.options-menu{
+    border-radius: 20px;
+    color: black;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.options-menu .option-btn
+{
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    padding: 16px;
+    font-size: 30px;
+    border-radius: 20px;
+    transition-duration: 0.3s;
+}
+.options-menu .option-btn:hover{
+    background-color: rgb(247, 237, 237);
+    cursor: pointer;
+}
+/*Estilos placar dos melhores jogadores*/
+.placar-menu{
+    flex-direction: column;
+    align-items: center;
+}
+.placar-menu .scores-list
+{
+    padding: 0px;
+    list-style: none;
+    background-color: wheat;
+}
+.placar-menu .scores-list li{
+    font-size: 30px;
+}

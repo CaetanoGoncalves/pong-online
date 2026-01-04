@@ -1,0 +1,4 @@
+Tela de inicio:
+	Iniciar	Solo ->	Placar (3 maiores scores)
+	  Entrar
+	Criar Sala

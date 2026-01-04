@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Inicio</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="script.js"></script>
+</head>
+<body>
+    <header>
+        <button class="show-options screen" id="show-options-btn">
+            Mostrar menu inicial
+        </button>
+    </header>
+    <div id="options-menu" class="options-menu screen active">
+        <h1>Menu de Opções</h1>
+        <button type="button" class="option-btn" id="jogar-solo-btn">Jogar solo</button>
+        <button type="button" class="option-btn" id="entrar-id-btn">Entrar por ID</button>
+        <button type="button" class="option-btn" id="criar-sala-btn">Criar Sala</button>
+        <button type="button" class="option-btn" id="ver-placar-btn">Placar de Jogadores</button>
+    </div>
+    <div class="placar-menu screen" id="placar-menu">
+        <h1> Placar </h1>
+        <ul class="scores-list" id="scores">
+            
+        </ul>
+    </div>
+</body>
+</html>
