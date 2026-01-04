@@ -1,7 +1,25 @@
-const options_menu = document.getElementById("options-menu");
-const placar_menu = document.getElementById("placar-menu");
-const app_header = document.getElementById("app-header");
+/* =========================
+   Screens e Estados
+========================= */
 
+const screens = {
+    menu: document.getElementById("options-menu"),
+    placar: document.getElementById("placar-menu"),
+};
+
+const appState = {
+    current: "menu",
+    states: {
+        menu: "menu",
+        placar: "placar",
+    }
+};
+
+/* =========================
+   Header e Dropdown
+========================= */
+
+const app_header = document.getElementById("app-header");
 const drop_down = app_header.querySelector("#dropdown");
 
 const drop_down_btn = drop_down.querySelector("#dropdown-btn");
@@ -9,43 +27,68 @@ const drop_down_menu = drop_down.querySelector("#dropdown-menu");
 const drop_down_placar = drop_down.querySelector("#dropdown-placar");
 const drop_down_options = drop_down.querySelector("#dropdown-options");
 
-const solo_button = options_menu.querySelector("#jogar-solo-btn");
-const create_room_button = options_menu.querySelector("#criar-sala-btn");
-const enter_id_button = options_menu.querySelector("#entrar-id-btn");
-const placar_button = options_menu.querySelector('#ver-placar-btn');
+/* =========================
+   Função de Estado
+========================= */
 
+function setState(newState)
+{
+    appState.current = newState;
 
-drop_down_btn.addEventListener('click', (e) =>{
-    if(drop_down.classList.contains('open'))
+    for (const screen in screens)
     {
-        drop_down.classList.remove('open');
-        return;
+        screens[screen].classList.remove('active');
     }
-    drop_down.classList.add('open');
-})
-drop_down_placar.addEventListener('click', show_placar)
-drop_down_options.addEventListener('click', (e)=>{
-    options_menu.classList.add('active');
+    screens[newState].classList.add('active');
+    drop_down.classList.remove('open');
     app_header.classList.remove('show');
-    placar_menu.classList.remove('active');
-})
+    
+}
 
+/* =========================
+   Botões do Menu Principal
+========================= */
 
-solo_button.addEventListener('click', (e) => {
+const solo_button = screens.menu.querySelector("#jogar-solo-btn");
+const create_room_button = screens.menu.querySelector("#criar-sala-btn");
+const enter_id_button = screens.menu.querySelector("#entrar-id-btn");
+const placar_button = screens.menu.querySelector("#ver-placar-btn");
+
+/* =========================
+   Eventos do Dropdown
+========================= */
+
+drop_down_btn.addEventListener('click', () => {
+    drop_down.classList.toggle('open');
+});
+
+drop_down_placar.addEventListener('click', () => {
+
+    setState(appState.states.placar);
+    app_header.classList.toggle('show');
+});
+
+drop_down_options.addEventListener('click', () => {
+    setState(appState.states.menu);
+});
+
+/* =========================
+   Eventos do Menu
+========================= */
+
+solo_button.addEventListener('click', () => {
     console.log("Quer jogar solo");
 });
-create_room_button.addEventListener('click', (e) => {
+
+create_room_button.addEventListener('click', () => {
     console.log("Quer criar sala");
 });
-enter_id_button.addEventListener('click', (e) =>{
+
+enter_id_button.addEventListener('click', () => {
     console.log("Quer entrar na sala pelo ID");
 });
-placar_button.addEventListener('click', show_placar);
 
-function show_placar()
-{   
-    drop_down.classList.remove('open');
-    app_header.classList.add('show');
-    placar_menu.classList.add('active');
-    options_menu.classList.remove('active');
-}
+placar_button.addEventListener('click', () => {
+    setState(appState.states.placar);
+    app_header.classList.toggle('show');
+});
