@@ -1,13 +1,17 @@
-body{
-    background-color: white;
+body {
     height: 100vh;
-    margin:0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+.app {
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap:100px
 }
-/*Estilos menu de opções*/
+
 .screen
 {
     display: none;
@@ -16,6 +20,9 @@ body{
 {
     display:flex;
 }
+
+/*Estilos menu de opções*/
+
 .options-menu{
     border-radius: 20px;
     color: black;
@@ -50,4 +57,60 @@ body{
 }
 .placar-menu .scores-list li{
     font-size: 30px;
+}
+/*Header de opções*/
+
+.app-header {
+    height: 60px;
+    padding: 20px 20px;
+
+    display: none;
+    align-items: center;
+}
+.app-header.show{
+    display: flex;
+}
+.dropdown
+{
+    position: relative;
+}
+.dropdown.open .dropdown-menu
+{
+    display: flex;
+}
+.dropdown-btn {
+    background: none;
+    border: none;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    
+    display: none;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0;
+    padding: 10px 0;
+    list-style: none;
+    gap:2px;
+
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    min-width: 160px;
+}
+.dropdown-menu li button{
+    font-size: 20px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    min-width: 160px;
 }

@@ -8,23 +8,32 @@
     <script type="module" src="script.js"></script>
 </head>
 <body>
-    <header>
-        <button class="show-options screen" id="show-options-btn">
-            Mostrar menu inicial
-        </button>
+    <header class="app-header" id="app-header">
+        <div class="dropdown" id="dropdown">
+            <button class="dropdown-btn" id="dropdown-btn">
+                Menu
+            </button>
+
+            <ul class="dropdown-menu" id="dropdown-menu">
+                <li><button type="button" id="dropdown-options">Menu</button></li>
+                <li><button type="button" id="dropdown-placar">Placar</button></li>
+            </ul>
+        </div>
     </header>
-    <div id="options-menu" class="options-menu screen active">
-        <h1>Menu de Opções</h1>
-        <button type="button" class="option-btn" id="jogar-solo-btn">Jogar solo</button>
-        <button type="button" class="option-btn" id="entrar-id-btn">Entrar por ID</button>
-        <button type="button" class="option-btn" id="criar-sala-btn">Criar Sala</button>
-        <button type="button" class="option-btn" id="ver-placar-btn">Placar de Jogadores</button>
-    </div>
-    <div class="placar-menu screen" id="placar-menu">
-        <h1> Placar </h1>
-        <ul class="scores-list" id="scores">
-            
-        </ul>
-    </div>
+    <main class="app" id="app">
+        <section  class="options-menu screen active" id="options-menu">
+            <h1>Menu de Opções</h1>
+            <button type="button" class="option-btn" id="jogar-solo-btn">Jogar solo</button>
+            <button type="button" class="option-btn" id="entrar-id-btn">Entrar por ID</button>
+            <button type="button" class="option-btn" id="criar-sala-btn">Criar Sala</button>
+            <button type="button" class="option-btn" id="ver-placar-btn">Placar de Jogadores</button>
+        </section>
+        <section class="placar-menu screen" id="placar-menu">
+            <h1> Placar </h1>
+            <ul class="scores-list" id="scores">
+                
+            </ul>
+        </section>
+    </main>    
 </body>
 </html>
