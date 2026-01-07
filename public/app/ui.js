@@ -11,24 +11,27 @@ export function init_ui()
     const drop_down_placar = drop_down.querySelector("#dropdown-placar");
     const drop_down_options = drop_down.querySelector("#dropdown-options");
 
-    placar_button.addEventListener('click', () => {
+    placar_button.addEventListener("click", () => {
         setState(appState.states.placar);
-        app_header.classList.toggle('show');
+        app_header.classList.toggle("show");
         render();
     });
-    drop_down_btn.addEventListener('click', () => {
-        drop_down.classList.toggle('open');
+    drop_down_btn.addEventListener("click", () => {
+        drop_down.classList.toggle("open");
         render();
     });
-    drop_down_placar.addEventListener('click', () => {
+    drop_down_placar.addEventListener("click", () => {
 
         setState(appState.states.placar);
         render();
     });
 
-    drop_down_options.addEventListener('click', () => {
+    drop_down_options.addEventListener("click", () => {
         setState(appState.states.menu);
-        app_header.classList.toggle('show');
+        app_header.classList.toggle("show");
         render();
+    });
+    document.getElementById("jogar-solo-btn").addEventListener("click",() => {
+        window.location.href = "./game/game.html";
     });
 }

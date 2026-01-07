@@ -7,7 +7,7 @@ export function render()
 {
     for(const key in screens)
     {
-        screens[key].classList.remove('active');
+        screens[key].classList.remove("active");
     }
-    screens[appState.current].classList.add('active');
+    screens[appState.current].classList.add("active");
 }

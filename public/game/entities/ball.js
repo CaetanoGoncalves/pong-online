@@ -1,6 +1,6 @@
 export class Ball
 {
-    constructor(color, x, y, radius, vr, maxSpeed, context)
+    constructor(color, x, y, radius, vr, maxSpeed, velocity, context)
     {
         this.color = color;
         this.x = x;
@@ -9,11 +9,11 @@ export class Ball
         this.spawnX = x;
         this.spawnY = y;
         this.radius = radius;
-
+        this.velocity = velocity;
         this.baseSpeed = vr;
         this.speed = vr;
         this.maxSpeed = maxSpeed;
-        let angle = (Math.random() * 2 - 1) * Math.PI / 4;
+        const angle = (Math.random() * 2 - 1) * Math.PI / 4;
         this.vx = this.speed * Math.cos(angle);
         this.vy = this.speed * Math.sin(angle);
 
@@ -25,7 +25,7 @@ export class Ball
         this.y = this.spawnY;
         this.speed = this.baseSpeed;
 
-        let angle = (Math.random() * 2 - 1) * Math.PI / 4;
+        const angle = (Math.random() * 2 - 1) * Math.PI / 4;
         this.vx = this.speed * Math.cos(angle);
         this.vy = this.speed * Math.sin(angle);
         return this;
@@ -43,7 +43,7 @@ export class Ball
     move(screenConfig)
     {
         if (this.y - this.radius <= 0 || this.y + this.radius >= screenConfig.screenHeight)
-            this.vy *= -1;
+            {this.vy *= -1;}
         this.x += this.vx;
         this.y += this.vy;
         return this;
@@ -64,11 +64,11 @@ export class Ball
         let collidePoint = (this.y - (rectangle.y + rectangle.height / 2));
         
         collidePoint = collidePoint / (rectangle.height / 2);
-        if(collidePoint > 1) collidePoint = 1;
-        if(collidePoint < -1) collidePoint = -1;
-        let angleRad = (Math.PI / 3) * collidePoint;
-        let direction = (this.vx < 0) ? 1 : -1;
-        this.speed += 1;
+        if(collidePoint > 1) {collidePoint = 1;}
+        if(collidePoint < -1) {collidePoint = -1;}
+        const angleRad = (Math.PI / 3) * collidePoint;
+        const direction = (this.vx < 0) ? 1 : -1;
+        this.speed += this.velocity;
         this.speed = Math.min(this.speed, this.maxSpeed);
         this.vx = direction * this.speed * Math.cos(angleRad);
         this.vy = this.speed * Math.sin(angleRad);

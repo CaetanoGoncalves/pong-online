@@ -7,7 +7,7 @@ export class Paddle {
         this.width = width;
         this.height = height;
         this.speed = speed;
-        this.context = context;    
+        this.context = context;
     }
     draw()
     {
@@ -17,12 +17,12 @@ export class Paddle {
     }
     up_position()
     {
-        this.y+=this.speed;
+        this.y-=this.speed;
         return this;
     }
     down_position()
     {
-        this.y -= this.speed;
+        this.y += this.speed;
         return this;
     }
 }
