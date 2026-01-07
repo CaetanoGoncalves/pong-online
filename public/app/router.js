@@ -2,6 +2,7 @@ import { appState } from "./state.js";
 const screens = {
     menu: document.getElementById("options-menu"),
     placar: document.getElementById("placar-menu"),
+    game: document.getElementById("jogar-menu")
 };
 export function render()
 {

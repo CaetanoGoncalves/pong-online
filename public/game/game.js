@@ -5,7 +5,7 @@ import { paddleState } from "./input.js";
 
 import { Paddle } from "./entities/paddle.js";
 import { Ball } from "./entities/ball.js";
-
+import { botControl } from "./entities/bot.js";
 
 export const canvas = document.getElementById("main-game");
 export const context = canvas.getContext("2d");
@@ -13,6 +13,12 @@ export const context = canvas.getContext("2d");
 canvas.width = screenConfig.screenWidth;
 canvas.height = screenConfig.screenHeight;
 
+const params = new URLSearchParams(window.location.search);
+const gamemode = params.get("mode");
+if(gamemode === "solo")
+{
+    paddleState.bot = true;
+}
 const leftPaddle = new Paddle(
     "white",
     paddleConfig.left.x,
@@ -74,14 +80,28 @@ function update() {
     {
         leftPaddle.down_position();
     };
-    paddleState.right = botControl(rightPaddle, bouncingBall);
-    if(paddleState.right === 0 && rightPaddle.y > 0)
+    if(gamemode === "solo")
     {
-        rightPaddle.up_position();
+        paddleState.right = botControl(rightPaddle, bouncingBall);
+        if(paddleState.right === 0 && rightPaddle.y > 0)
+        {
+            rightPaddle.up_position();
+        }
+        if(paddleState.right === 1 && rightPaddle.y + rightPaddle.height < screenConfig.screenHeight)
+        {
+            rightPaddle.down_position();
+        }
     }
-    if(paddleState.right === 1 && rightPaddle.y + rightPaddle.height < screenConfig.screenHeight)
+    else
     {
-        rightPaddle.down_position();
+        if(paddleState.right === 0 && rightPaddle.y > 0)
+        {
+            rightPaddle.up_position();
+        };
+        if(paddleState.right === 1 && rightPaddle.y + rightPaddle.height < screenConfig.screenHeight)
+        {
+            rightPaddle.down_position();
+        };  
     }
 }
 function draw() {
@@ -90,23 +110,6 @@ function draw() {
     bouncingBall.draw();
     leftPaddle.draw();
     rightPaddle.draw();
-}
-function botControl(paddle, ball)
-{
-    const paddleCenter = paddle.y + paddle.height / 2;
-    const ballPosition = ball.y;
-
-    if (ball.vx < 0) {
-        return 2;
-    }
-
-    if (ballPosition < paddleCenter - 5) {
-        return 0; 
-    }
-    if (ballPosition > paddleCenter + 5) {
-        return 1; 
-    }
-    return 2; 
 }
 function drawScore(player, bot)
 {

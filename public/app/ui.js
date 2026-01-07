@@ -3,6 +3,7 @@ import { render } from "./router.js";
 
 export function init_ui()
 {
+    const jogar_local_menu = document.getElementById("jogar-menu");
     const placar_button = document.getElementById("options-menu").querySelector("#ver-placar-btn");
     const app_header = document.getElementById("app-header");
     const drop_down = app_header.querySelector("#dropdown");
@@ -31,7 +32,15 @@ export function init_ui()
         app_header.classList.toggle("show");
         render();
     });
-    document.getElementById("jogar-solo-btn").addEventListener("click",() => {
-        window.location.href = "./game/game.html";
+    document.getElementById("jogar-local").addEventListener("click", ()=> {
+        setState(appState.states.game);
+        render();
+    });
+    jogar_local_menu.querySelector("#jogar-solo-btn").addEventListener("click",  ()=>{
+        window.location.href =  "./game/game.html?mode=solo";
+    });
+    jogar_local_menu.querySelector("#jogar-dois-btn").addEventListener("click", ()=>{
+        console.log("Multiplayer");
+        window.location.href = "./game/game.html?mode=multiplayer";
     });
 }

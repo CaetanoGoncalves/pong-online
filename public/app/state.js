@@ -3,6 +3,7 @@ export const appState = {
     states: {
         menu: "menu",
         placar: "placar",
+        game:"game"
     }
 };
 export function setState(newState)

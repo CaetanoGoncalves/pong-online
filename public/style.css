@@ -44,6 +44,27 @@ body {
     background-color: rgb(247, 237, 237);
     cursor: pointer;
 }
+/*Estilos menu de jogo offline*/
+.jogar-menu {
+    border-radius: 20px;
+    color: black;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.jogar-menu .option-btn {
+    background-color: white;
+    width: 200px;
+    height: 100px;
+    padding: 16px;
+    font-size: 30px;
+    border-radius: 20px;
+    transition-duration: 0.3s;
+}
+.jogar-menu .option-btn:hover{
+    background-color: rgb(247, 237, 237);
+    cursor: pointer;
+}
 /*Estilos placar dos melhores jogadores*/
 .placar-menu{
     flex-direction: column;
