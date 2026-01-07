@@ -37,3 +37,32 @@ document.addEventListener("keyup", (e) => {
     }
     
 });
+
+let leftTouchY = null;
+let rightTouchY = null;
+
+document.addEventListener("pointerdown", (e) => {
+    if (e.clientX < window.innerWidth / 2) {
+        leftTouchY = e.clientY;
+    } else {
+        rightTouchY = e.clientY;
+    }
+});
+
+document.addEventListener("pointermove", (e) => {
+    if (leftTouchY !== null && e.clientX < window.innerWidth / 2) {
+        paddleState.left = e.clientY < leftTouchY ? states.up : states.down;
+        leftTouchY = e.clientY;
+    }
+
+    if (!paddleState.bot && rightTouchY !== null && e.clientX >= window.innerWidth / 2) {
+        paddleState.right = e.clientY < rightTouchY ? states.up : states.down;
+        rightTouchY = e.clientY;
+    }
+});
+document.addEventListener("pointerup", () => {
+    paddleState.left = states.stop;
+    paddleState.right = states.stop;
+    leftTouchY = null;
+    rightTouchY = null;
+});
