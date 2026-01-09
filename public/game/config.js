@@ -26,7 +26,7 @@ const paddleGap = { x:screenConfig.screenWidth/20, y:screenConfig.screenHeight/2
 export const paddleConfig = {
     width:screenConfig.screenWidth/50, 
     height:screenConfig.screenHeight/4, 
-    speed:screenConfig.screenHeight/100,  
+    speed:screenConfig.screenHeight/60,  
     right: {
         x:screenConfig.screenWidth - paddleGap.x,
         y: paddleGap.y
